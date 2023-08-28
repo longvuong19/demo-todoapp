@@ -18,7 +18,7 @@ const Header = () => {
       alignItems="center"
       justifyContent="space-between"
     >
-      <Box fontSize="20px" color="#fff" fontWeight="bold">
+      <Box fontSize="32px" color="#fff" fontWeight="bold">
         <Link to="/home" style={{ textDecoration: "none" }}>
           YourTask
         </Link>

@@ -59,7 +59,7 @@ const Login = () => {
     axiosInstance.post("/auth/login", values).then((res) => {
       onSubmitProps.resetForm();
       dispatch(setLogin(res.data.user));
-      alert("Login successfully! You will now be redirected to Homepage.");
+      alert("Login successfully!");
       navigate("/home");
     });
   };

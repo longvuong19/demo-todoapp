@@ -11,7 +11,7 @@ import {
 import Stack from "@mui/material/Stack";
 import { Container } from "@mui/system";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "../service/api.js";
 import { useDispatch, useSelector } from "react-redux";
 import { setTasks } from "../redux/TaskSlice.js";
@@ -28,6 +28,11 @@ const Home = () => {
     { label: "Last seven", value: "seven" },
     { label: "Last Thirty", value: "thirty" },
   ];
+
+  const navigate = useNavigate();
+  const handleCreateTask = () => {
+    navigate("/task/create");
+  };
 
   useEffect(() => {
     axios.get(`/task?type=${typeFilter}&day=${dayFilter}`).then((res) => {
@@ -57,6 +62,9 @@ const Home = () => {
               ))}
             </Select>
           </FormControl>
+          <Button onClick={handleCreateTask} sx={{ border: "1px solid #ccc" }}>
+            Create Task
+          </Button>
           <Stack direction="row" spacing={2}>
             {days.map((day, index) => (
               <Button
@@ -73,7 +81,7 @@ const Home = () => {
             ))}
           </Stack>
         </Box>
-        <Box display="flex" justifyContent="space-between" m="0 16px">
+        <Box display="flex" justifyContent="space-between" m="16px">
           <Button
             onClick={() => {
               setTypeFilter("");
@@ -83,7 +91,7 @@ const Home = () => {
             Clear filter
           </Button>
         </Box>
-        <Box m="32px 16px">
+        <Box m="16px">
           <Grid container spacing={4}>
             {tasks.map((task, idx) => (
               <Grid item xs={12} sm={6} md={4} lg={3} key={`${idx}-${task.id}`}>

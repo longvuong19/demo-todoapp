@@ -20,7 +20,16 @@ const Task = ({ task }) => {
             <Typography variant="body2" color="text.secondary">
               Date: {task.date.split("T")[0]}
             </Typography>
-            <Typography sx={{ p: 0, mt: "12px" }}>{task.type}</Typography>
+            <Typography fontSize="16px" sx={{ p: 0, mt: "12px" }}>
+              {task.type}
+            </Typography>
+            <Typography
+              fontSize="12px"
+              fontStyle="italic"
+              sx={{ p: 0, mt: "12px" }}
+            >
+              Status: {task.status}
+            </Typography>
           </CardContent>
         </CardActionArea>
       </Card>
